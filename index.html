@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Inventário</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-black text-white p-4 text-center  ">
+    <div class="flex items-center justify-center"><img src="assets/estoque-pronto.png" alt="" width="50px" height="50px"/><h1 class="text-xl font-bold"> Sistema de Inventário</h1></div>
+  </header>
+
+  <!-- Botões Principais -->
+  <main class="p-6 space-y-4 flex-1">
+    <button onclick="navigateTo('create-inventory.html')" 
+            class="w-full bg-yellow-400 text-black py-4 rounded-lg font-bold">
+      <a href="create-inventory.html"> Criar Novo Inventário</a>
+    </button>
+    <button onclick="navigateTo('inventory-list.html')" 
+            class="w-full bg-yellow-400 text-black py-4 rounded-lg font-bold">
+     <a href="count-inventory.html"> Consultar Inventários </a>
+    </button>
+    <button class="w-full bg-yellow-400 text-black py-4 rounded-lg font-bold">
+       Importar Lista de Dados
+    </button>
+    <button class="w-full bg-yellow-400 text-black py-4 rounded-lg font-bold">
+       Exportar Lista de Dados
+    </button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white p-4 text-center">
+    <div class="flex items-center justify-center">
+      <img src="assets/logo-plasticos-lummar_pt.png" alt="" width="60px">
+      <img src="assets/logo-brinquedos-lummar_.png" alt="" width="60px">
+    </div>
+  </footer>
+</body>
+</html>

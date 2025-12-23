@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Inventário</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-black text-white p-4 flex items-center">
+    <a id="back-button" class="mr-4" href="index.html">←</a>
+    <h1 class="text-xl font-bold">Criar Novo Inventário</h1>
+  </header>
+
+  <!-- Formulário -->
+  <form id="inventory-form" class="p-6 space-y-6">
+    <!-- Nome do Inventário -->
+    <div>
+      <label class="block mb-2 font-bold">Nome do Inventário</label>
+      <input type="text" name="inventory_name" required
+             class="w-full p-3 border rounded">
+    </div>
+
+    <!-- Número de Contagens -->
+    <div>
+      <label class="block mb-2 font-bold">Número de contagens</label>
+      <div class="flex space-x-4">
+        <label class="flex items-center">
+          <input type="radio" name="number_of_counts" value="1" checked class="mr-2">
+          1 Contagem
+        </label>
+        <label class="flex items-center">
+          <input type="radio" name="number_of_counts" value="2" class="mr-2">
+          2 Contagens
+        </label>
+        <label class="flex items-center">
+          <input type="radio" name="number_of_counts" value="3" class="mr-2">
+          3 Contagens
+        </label>
+      </div>
+    </div>
+
+    <!-- Endereço -->
+    <div class="space-y-1">
+      <div class="flex-1"><label class="block font-bold">Endereço</label></div>
+      <div class="flex-1"><label for="">Rua </label><input type="checkbox" name="street"  class="w-full p-3 border rounded" checked></div> 
+      <div class="flex-1"><label for="">Prédio / Bloco </label><input type="checkbox" name="block"  class="w-full p-3 border rounded"></div>
+      <div class="flex-1"><label for="">Apartamento / Nível </label><input type="checkbox" name="level" class="w-full p-3 border rounded"></div>
+    </div>
+
+    <!-- Tipo de Multiplicidade -->
+    <div>
+      <label class="block mb-2 font-bold">Tipo de multiplicidade</label>
+      <div class="space-y-2">
+        <label class="flex items-center">
+          <input type="radio" name="multiplication_type" value="50_units" checked class="mr-2">
+          Contagem por Unidade / Peso
+        </label>
+        <label class="flex items-center">
+          <input type="radio" name="multiplication_type" value="factor" class="mr-2">
+           Contagem por Multiplicação / Fator
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="w-full bg-yellow-500 text-white py-3 rounded-lg font-bold">
+      Importar Lista de Dados
+    </button>
+     <button type="submit" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold">
+      Criar Inventário
+    </button>
+    
+  </form>
+
+  <script>
+    // Mostrar/ocultar campo de fator
+    document.querySelectorAll('input[name="multiplication_type"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const factorInput = document.querySelector('input[name="multiplication_value"]');
+        factorInput.classList.toggle('hidden', this.value !== 'factor');
+      });
+    });
+
+    // Submit do formulário
+    document.getElementById('inventory-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        inventory_name: e.target.inventory_name.value,
+        number_of_counts: document.querySelector('input[name="number_of_counts"]:checked').value,
+        address: {
+          street: e.target.street.value,
+          block: e.target.block.value,
+          level: e.target.level.value
+        },
+        multiplication_type: document.querySelector('input[name="multiplication_type"]:checked').value,
+        multiplication_value: e.target.multiplication_value?.value || ''
+      };
+
+      await apiRequest('/inventories', 'POST', formData);
+      alert('Inventário criado com sucesso!');
+      navigateTo('inventory-list.html');
+    });
+  </script>
+</body>
+</html>

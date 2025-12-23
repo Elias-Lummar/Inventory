@@ -1,0 +1,32 @@
+.button{
+    color: #1d1d1b;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.button a {
+    width: 200px;
+    height: 50px;
+    background-color: #FFCA00;
+    padding: 40px 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 15px;
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+.button img{
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+}
+
+@media (max-width: 500px) {
+    .button{
+        grid-template-columns: 1fr;
+    }
+}
