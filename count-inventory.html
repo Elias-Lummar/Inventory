@@ -1,148 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Contagem - Sistema de Inventário</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-        .input-field {
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-family: 'Roboto', sans-serif;
-            transition: border-color 0.3s;
-        }
-        .input-field:focus {
-            outline: none;
-            border-color: #FFD700;
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-        }
-        .label-text {
-            font-size: 14px;
-            font-weight: 500;
-            color: #1f2937;
-            margin-bottom: 6px;
-            display: block;
-        }
-        .required::after {
-            content: ' *';
-            color: #ef4444;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .input-field {
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        transition: border-color 0.3s;
+      }
+      .input-field:focus {
+        outline: none;
+        border-color: #ffd700;
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+      }
+      .label-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: #1f2937;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .required::after {
+        content: " *";
+        color: #ef4444;
+      }
     </style>
-</head>
-<body class="bg-white min-h-screen flex flex-col">
-
+  </head>
+  <body class="bg-white min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="bg-[#1A1A1A] text-white p-4 flex items-center justify-center shadow-md">
-        <div class="flex items-center gap-3">
-            <div class="relative">
-                <i data-lucide="box" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 absolute -bottom-1 -right-1 bg-[#1A1A1A] rounded-full"></i>
-            </div>
-            <h1 class="text-lg font-medium tracking-wide">Sistema de Inventário</h1>
+    <header
+      class="bg-[#1A1A1A] text-white p-4 flex items-center justify-center shadow-md"
+    >
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <i
+            data-lucide="box"
+            class="w-8 h-8 text-yellow-400 fill-yellow-400"
+          ></i>
+          <i
+            data-lucide="check-circle-2"
+            class="w-4 h-4 text-green-500 absolute -bottom-1 -right-1 bg-[#1A1A1A] rounded-full"
+          ></i>
         </div>
+        <h1 class="text-lg font-medium tracking-wide">Sistema de Inventário</h1>
+      </div>
     </header>
 
-    
     <!-- Conteúdo Principal -->
     <main class="flex-1 w-full max-w-md mx-auto py-6 px-4 flex flex-col gap-6">
-        
-        <!-- Botão Voltar -->
-        <div class="flex items-center">
-            <button class="hover:bg-gray-100 p-2 rounded-full -ml-2 transition-colors">
-                <i data-lucide="arrow-left" class="w-6 h-6 text-gray-700"></i>
-            </button>
+      <!-- Botão Voltar -->
+      <div class="flex items-center">
+        <a
+          class="hover:bg-gray-100 p-2 rounded-full -ml-2 transition-colors"
+          href=""
+        >
+          <i data-lucide="arrow-left" class="w-6 h-6 text-gray-700"></i>
+        </a>
+      </div>
+
+      <!-- Título da Seção -->
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 rounded-full bg-[#FFD700] flex-shrink-0"></div>
+        <div>
+          <h2 class="text-base font-bold text-black">
+            Inventário - Identificação do Inventário
+          </h2>
+          <p class="text-xs text-gray-500 mt-1">1ª Contagem</p>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <form class="space-y-5">
+        <!-- Campo Nome -->
+        <div>
+          <label class="label-text required">Nome</label>
+          <input
+            type="text"
+            placeholder="Digite seu Nome"
+            class="input-field w-full"
+          />
         </div>
 
-        <!-- Título da Seção -->
-        <div class="flex items-center gap-3">
-            <div class="w-6 h-6 rounded-full bg-[#FFD700] flex-shrink-0"></div>
-            <div>
-                <h2 class="text-base font-bold text-black">Inventário - Identificação do Inventário</h2>
-                <p class="text-xs text-gray-500 mt-1">1ª Contagem</p>
-            </div>
+        <!-- Campo Código do Produto -->
+        <div>
+          <label class="label-text required">Código do Produto</label>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              placeholder="Qual o Código para esse produto?"
+              class="input-field flex-1"
+            />
+            <button
+              type="button"
+              class="w-12 h-12 bg-[#FFD700] hover:bg-yellow-500 rounded-lg flex items-center justify-center transition-colors shadow-sm"
+            >
+              <i data-lucide="camera" class="w-5 h-5 text-black"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Formulário -->
-        <form class="space-y-5">
-            
-            <!-- Campo Nome -->
-            <div>
-                <label class="label-text required">Nome</label>
-                <input type="text" placeholder="Digite seu Nome" class="input-field w-full" />
-            </div>
+        <!-- Campo Descrição -->
+        <div>
+          <label class="label-text">Descrição</label>
+          <input
+            type="text"
+            placeholder=""
+            class="input-field w-full bg-gray-100"
+            disabled
+          />
+        </div>
 
-            <!-- Campo Código do Produto -->
-            <div>
-                <label class="label-text required">Código do Produto</label>
-                <div class="flex gap-2">
-                    <input type="text" placeholder="Qual o Código para esse produto?" class="input-field flex-1" />
-                    <button type="button" class="w-12 h-12 bg-[#FFD700] hover:bg-yellow-500 rounded-lg flex items-center justify-center transition-colors shadow-sm">
-                        <i data-lucide="camera" class="w-5 h-5 text-black"></i>
-                    </button>
-                </div>
-            </div>
+        <!-- Campo Filtro -->
+        <div>
+          <label class="label-text">Filtrar</label>
+          <input
+            type="text"
+            placeholder="Quantos Produtos dentro de uma Caixa?"
+            class="input-field w-full"
+          />
+        </div>
 
-            <!-- Campo Descrição -->
-            <div>
-                <label class="label-text">Descrição</label>
-                <input type="text" placeholder="" class="input-field w-full bg-gray-100" disabled />
-            </div>
+        <!-- Campo Unidade -->
+        <div>
+          <label class="label-text">Unidade</label>
+          <input
+            type="text"
+            placeholder="Quantas Caixas desse produto?"
+            class="input-field w-full"
+          />
+        </div>
 
-            <!-- Campo Filtro -->
-            <div>
-                <label class="label-text">Filtrar</label>
-                <input type="text" placeholder="Quantos Produtos dentro de uma Caixa?" class="input-field w-full" />
-            </div>
+        <!-- Campo Rua -->
+        <div>
+          <label class="label-text required">Rua</label>
+          <input
+            type="text"
+            placeholder="Qual Rua está localizado esse item?"
+            class="input-field w-full"
+          />
+        </div>
 
-            <!-- Campo Unidade -->
-            <div>
-                <label class="label-text">Unidade</label>
-                <input type="text" placeholder="Quantas Caixas desse produto?" class="input-field w-full" />
-            </div>
+        <!-- Campo Prédio -->
+        <div>
+          <label class="label-text">Prédio</label>
+          <input
+            type="text"
+            placeholder="Qual Rua está localizado esse item?"
+            class="input-field w-full"
+          />
+        </div>
 
-            <!-- Campo Rua -->
-            <div>
-                <label class="label-text required">Rua</label>
-                <input type="text" placeholder="Qual Rua está localizado esse item?" class="input-field w-full" />
-            </div>
+        <!-- Campo Nível -->
+        <div>
+          <label class="label-text">Nível</label>
+          <select
+            class="input-field w-full appearance-none bg-white cursor-pointer"
+          >
+            <option>NÍVEL I</option>
+            <option>NÍVEL II</option>
+            <option>NÍVEL III</option>
+          </select>
+        </div>
 
-            <!-- Campo Prédio -->
-            <div>
-                <label class="label-text">Prédio</label>
-                <input type="text" placeholder="Qual Rua está localizado esse item?" class="input-field w-full" />
-            </div>
-
-            <!-- Campo Nível -->
-            <div>
-                <label class="label-text">Nível</label>
-                <select class="input-field w-full appearance-none bg-white cursor-pointer">
-                    <option>NÍVEL I</option>
-                    <option>NÍVEL II</option>
-                    <option>NÍVEL III</option>
-                </select>
-            </div>
-
-            <!-- Botão Enviar -->
-            <button type="submit" class="w-full bg-[#FFD700] hover:bg-yellow-500 text-black font-bold text-base py-4 rounded-lg shadow-sm uppercase tracking-wide transition-colors mt-8">
-                Enviar Contagem
-            </button>
-
-        </form>
-
+        <!-- Botão Enviar -->
+        <button
+          type="submit"
+          class="w-full bg-[#FFD700] hover:bg-yellow-500 text-black font-bold text-base py-4 rounded-lg shadow-sm uppercase tracking-wide transition-colors mt-8"
+        >
+          Enviar Contagem
+        </button>
+      </form>
     </main>
 
-   
-
     <script>
-        lucide.createIcons();
+      lucide.createIcons();
     </script>
-</body>
+  </body>
 </html>

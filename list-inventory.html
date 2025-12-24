@@ -1,212 +1,222 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tela Inicial - Sistema de Inventário</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-        .inventory-card {
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            background: white;
-            transition: box-shadow 0.3s;
-        }
-        .inventory-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .status-circle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .circle-yellow {
-            background: #FFD700;
-        }
-        .circle-green {
-            background: #10b981;
-        }
-        .card-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #1f2937;
-        }
-        .card-subtitle {
-            font-size: 12px;
-            color: #6b7280;
-            margin-top: 2px;
-        }
-        .contagem-list {
-            list-style: none;
-            padding: 0;
-            margin: 12px 0;
-            font-size: 13px;
-            color: #4b5563;
-            line-height: 1.6;
-        }
-        .contagem-list li {
-            padding: 4px 0;
-        }
-        .contagem-list strong {
-            color: #1f2937;
-            font-weight: 600;
-        }
-        .btn-details {
-            width: 100%;
-            background: #FFD700;
-            color: #1A1A1A;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background-color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .btn-details:hover {
-            background: #ffc700;
-        }
-        .section-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 12px;
-            margin-top: 20px;
-        }
-        .section-title:first-of-type {
-            margin-top: 0;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #4b5563;
-            margin-bottom: 8px;
-        }
-        .legend-circle {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .inventory-card {
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+        background: white;
+        transition: box-shadow 0.3s;
+      }
+      .inventory-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .status-circle {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .circle-yellow {
+        background: #ffd700;
+      }
+      .circle-green {
+        background: #10b981;
+      }
+      .card-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1f2937;
+      }
+      .card-subtitle {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 2px;
+      }
+      .contagem-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0;
+        font-size: 13px;
+        color: #4b5563;
+        line-height: 1.6;
+      }
+      .contagem-list li {
+        padding: 4px 0;
+      }
+      .contagem-list strong {
+        color: #1f2937;
+        font-weight: 600;
+      }
+      .btn-details {
+        width: 100%;
+        background: #ffd700;
+        color: #1a1a1a;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .btn-details:hover {
+        background: #ffc700;
+      }
+      .section-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 12px;
+        margin-top: 20px;
+      }
+      .section-title:first-of-type {
+        margin-top: 0;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #4b5563;
+        margin-bottom: 8px;
+      }
+      .legend-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
     </style>
-</head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
-
+  </head>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="bg-[#1A1A1A] text-white p-4 flex items-center justify-center shadow-md">
-        <div class="flex items-center gap-3">
-            <div class="relative">
-                <i data-lucide="box" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 absolute -bottom-1 -right-1 bg-[#1A1A1A] rounded-full"></i>
-            </div>
-            <h1 class="text-lg font-medium tracking-wide">Sistema de Inventário</h1>
+    <header
+      class="bg-[#1A1A1A] text-white p-4 flex items-center justify-center shadow-md"
+    >
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <i
+            data-lucide="box"
+            class="w-8 h-8 text-yellow-400 fill-yellow-400"
+          ></i>
+          <i
+            data-lucide="check-circle-2"
+            class="w-4 h-4 text-green-500 absolute -bottom-1 -right-1 bg-[#1A1A1A] rounded-full"
+          ></i>
         </div>
+        <h1 class="text-lg font-medium tracking-wide">Sistema de Inventário</h1>
+      </div>
     </header>
 
-   
-  
     <!-- Conteúdo Principal -->
     <main class="flex-1 w-full max-w-md mx-auto py-6 px-4 flex flex-col">
-        
-        <!-- Legenda de Inventários -->
-        <div class="mb-6">
-            <h2 class="section-title">Inventários</h2>
-            <div class="legend-item">
-                <div class="legend-circle circle-yellow"></div>
-                <span>Inventários Aberto para Contagem</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle circle-green"></div>
-                <span>Inventários em processo de Contagem</span>
-            </div>
+      <!-- Legenda de Inventários -->
+      <div class="mb-6">
+        <h2 class="section-title">Inventários</h2>
+        <div class="legend-item">
+          <div class="legend-circle circle-yellow"></div>
+          <span>Inventários Aberto para Contagem</span>
         </div>
-
-        <!-- Card Inventário 1 (Amarelo - Aberto) -->
-        <div class="inventory-card">
-            <div class="card-header">
-                <div class="status-circle circle-yellow"></div>
-                <div>
-                    <div class="card-title">Inventário - Identificação do Inventário</div>
-                    <div class="card-subtitle">1ª Contagem: Usuário que Assumiu</div>
-                </div>
-            </div>
-            <ul class="contagem-list">
-                <li><strong>1º Contagem:</strong> Usuário que Assumiu</li>
-                <li><strong>2º Contagem:</strong> Usuário que Assumiu</li>
-                <li><strong>3º Contagem:</strong></li>
-            </ul>
-            <button class="btn-details">
-                <i data-lucide="eye" class="w-4 h-4"></i>
-                Ver detalhes
-            </button>
+        <div class="legend-item">
+          <div class="legend-circle circle-green"></div>
+          <span>Inventários em processo de Contagem</span>
         </div>
+      </div>
 
-        <!-- Card Inventário 2 (Verde - Em Processo) -->
-        <div class="inventory-card">
-            <div class="card-header">
-                <div class="status-circle circle-green"></div>
-                <div>
-                    <div class="card-title">Inventário - Identificação do Inventário</div>
-                </div>
+      <!-- Card Inventário 1 (Amarelo - Aberto) -->
+      <div class="inventory-card">
+        <div class="card-header">
+          <div class="status-circle circle-yellow"></div>
+          <div>
+            <div class="card-title">
+              Inventário - Identificação do Inventário
             </div>
-            <ul class="contagem-list">
-                <li><strong>1º Contagem:</strong></li>
-                <li><strong>2º Contagem:</strong></li>
-                <li><strong>3º Contagem:</strong></li>
-            </ul>
-            <button class="btn-details">
-                <i data-lucide="eye" class="w-4 h-4"></i>
-                Ver detalhes
-            </button>
+            <div class="card-subtitle">1ª Contagem: Usuário que Assumiu</div>
+          </div>
         </div>
+        <ul class="contagem-list">
+          <li><strong>1º Contagem:</strong> Usuário que Assumiu</li>
+          <li><strong>2º Contagem:</strong> Usuário que Assumiu</li>
+          <li><strong>3º Contagem:</strong></li>
+        </ul>
+        <a class="btn-details" href="details-inventory.html">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          Ver detalhes
+        </a>
+      </div>
 
-        <!-- Card Inventário 3 (Amarelo - Aberto) -->
-        <div class="inventory-card">
-            <div class="card-header">
-                <div class="status-circle circle-yellow"></div>
-                <div>
-                    <div class="card-title">Inventário - Identificação do Inventário</div>
-                </div>
+      <!-- Card Inventário 2 (Verde - Em Processo) -->
+      <div class="inventory-card">
+        <div class="card-header">
+          <div class="status-circle circle-green"></div>
+          <div>
+            <div class="card-title">
+              Inventário - Identificação do Inventário
             </div>
-            <ul class="contagem-list">
-                <li><strong>1º Contagem:</strong></li>
-                <li><strong>2º Contagem:</strong></li>
-                <li><strong>3º Contagem:</strong></li>
-            </ul>
-            <button class="btn-details">
-                <i data-lucide="eye" class="w-4 h-4"></i>
-                Ver detalhes
-            </button>
+          </div>
         </div>
+        <ul class="contagem-list">
+          <li><strong>1º Contagem:</strong></li>
+          <li><strong>2º Contagem:</strong></li>
+          <li><strong>3º Contagem:</strong></li>
+        </ul>
+        <a class="btn-details" href="details-inventory.html">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          Ver detalhes
+        </a>
+      </div>
 
+      <!-- Card Inventário 3 (Amarelo - Aberto) -->
+      <div class="inventory-card">
+        <div class="card-header">
+          <div class="status-circle circle-yellow"></div>
+          <div>
+            <div class="card-title">
+              Inventário - Identificação do Inventário
+            </div>
+          </div>
+        </div>
+        <ul class="contagem-list">
+          <li><strong>1º Contagem:</strong></li>
+          <li><strong>2º Contagem:</strong></li>
+          <li><strong>3º Contagem:</strong></li>
+        </ul>
+        <a class="btn-details" href="details-inventory.html">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          Ver detalhes
+        </a>
+      </div>
     </main>
 
-   
-  
     <script>
-        lucide.createIcons();
+      lucide.createIcons();
     </script>
-</body>
+  </body>
 </html>
