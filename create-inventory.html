@@ -1,118 +1,268 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criar Inventário</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Novo Inventário - Sistema de Inventário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .form-section {
+            margin-bottom: 24px;
+        }
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #1A1A1A;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+        .section-label i {
+            width: 16px;
+            height: 16px;
+        }
+        .input-field {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            background: white;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #FFD700;
+        }
+        .checkbox-item label {
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            background: white;
+            flex-wrap: wrap;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .radio-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #FFD700;
+        }
+        .radio-item label {
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 14px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .btn-import {
+            background: #FFD700;
+            color: #1A1A1A;
+        }
+        .btn-import:hover {
+            background: #ffc700;
+        }
+        .btn-create {
+            background: #10b981;
+            color: white;
+        }
+        .btn-create:hover {
+            background: #059669;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-  <!-- Header -->
-  <header class="bg-black text-white p-4 flex items-center">
-    <a id="back-button" class="mr-4" href="index.html">←</a>
-    <h1 class="text-xl font-bold">Criar Novo Inventário</h1>
-  </header>
+<body class="bg-gray-50 min-h-screen flex flex-col">
 
-  <!-- Formulário -->
-  <form id="inventory-form" class="p-6 space-y-6">
-    <!-- Nome do Inventário -->
-    <div>
-      <label class="block mb-2 font-bold">Nome do Inventário</label>
-      <input type="text" name="inventory_name" required
-             class="w-full p-3 border rounded">
-    </div>
+    <!-- Header -->
+    <header class="bg-[#1A1A1A] text-white p-4 flex items-center justify-center shadow-md">
+        <div class="flex items-center gap-3">
+            <div class="relative">
+                <i data-lucide="box" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 absolute -bottom-1 -right-1 bg-[#1A1A1A] rounded-full"></i>
+            </div>
+            <h1 class="text-lg font-medium tracking-wide">Sistema de Inventário</h1>
+        </div>
+    </header>
 
-    <!-- Número de Contagens -->
-    <div>
-      <label class="block mb-2 font-bold">Número de contagens</label>
-      <div class="flex space-x-4">
-        <label class="flex items-center">
-          <input type="radio" name="number_of_counts" value="1" checked class="mr-2">
-          1 Contagem
-        </label>
-        <label class="flex items-center">
-          <input type="radio" name="number_of_counts" value="2" class="mr-2">
-          2 Contagens
-        </label>
-        <label class="flex items-center">
-          <input type="radio" name="number_of_counts" value="3" class="mr-2">
-          3 Contagens
-        </label>
-      </div>
-    </div>
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 w-full max-w-md mx-auto py-6 px-4 flex flex-col">
+        
+        <!-- Título -->
+        <h2 class="text-lg font-bold text-gray-900 mb-6">Criar novo inventário</h2>
 
-    <!-- Endereço -->
-    <div class="space-y-1">
-      <label class="block font-bold">Endereço</label>
-  <div class="flex items-center gap-2">
-        <input type="checkbox" name="street" checked />
-        <label>Rua</label>
-      </div>
+        <!-- Formulário -->
+        <form class="space-y-6">
+            
+            <!-- Seção 1: Nome do Inventário -->
+            <div class="form-section">
+                <div class="section-label">
+                    <i data-lucide="type" class="w-4 h-4"></i>
+                    Nome do Inventário
+                </div>
+                <input type="text" placeholder="" class="input-field" />
+            </div>
 
-      <div class="flex items-center gap-2">
-        <input type="checkbox" name="block" />
-        <label>Prédio / Bloco</label>
-      </div>
+            <!-- Seção 2: Número de Contagens -->
+            <div class="form-section">
+                <div class="section-label">
+                    <i data-lucide="hash" class="w-4 h-4"></i>
+                    Número de contagens
+                </div>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="contagem1" name="contagens" value="1" checked>
+                        <label for="contagem1">
+                            1 Contagem
+                        </label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="contagem2" name="contagens" value="2">
+                        <label for="contagem2">
+                             2 Contagem
+                        </label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="contagem3" name="contagens" value="3">
+                        <label for="contagem3">
+                            3 Contagem
+                        </label>
+                    </div>
+                </div>
+            </div>
 
-      <div class="flex items-center gap-2">
-        <input type="checkbox" name="level" />
-        <label>Apartamento / Nível</label>
-      </div>
+            <!-- Seção 3: Endereçamento -->
+            <div class="form-section">
+                <div class="section-label">
+                   
+                    Endereçamento
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="rua" checked>
+                        <label for="rua">
+                         
+                            Rua
+                        </label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bloco" >
+                        <label for="bloco">
+                            
+                            Bloco / Prédio
+                        </label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="nivel" >
+                        <label for="nivel">
+                           
+                            Nível / Apartamento
+                        </label>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Tipo de Multiplicidade -->
-    <div>
-      <label class="block mb-2 font-bold">Tipo de multiplicidade</label>
-      <div class="space-y-2">
-        <label class="flex items-center">
-          <input type="radio" name="multiplication_type" value="50_units" checked class="mr-2">
-          Contagem por Unidade / Peso
-        </label>
-        <label class="flex items-center">
-          <input type="radio" name="multiplication_type" value="factor" class="mr-2">
-           Contagem por Multiplicação / Fator
-        </label>
-      </div>
-    </div>
+            <!-- Seção 4: Tipo de Multiplicidade -->
+            <div class="form-section">
+                <div class="section-label">
+                    Tipo de multiplicidade
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="unidade" checked>
+                        <label for="unidade">
+                            unidade / peso
+                        </label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fator" checked>
+                        <label for="fator">
+                            Fator de multiplicação
+                        </label>
+                    </div>
+                </div>
+            </div>
 
-    <button type="submit" class="w-full bg-yellow-500 text-white py-3 rounded-lg font-bold">
-      Importar Lista de Dados
-    </button>
-     <button type="submit" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold">
-      Criar Inventário
-    </button>
+            <!-- Botões de Ação -->
+            <div class="mt-8 space-y-3">
+                <button type="button" class="btn-primary btn-import">
+                    <i data-lucide="upload" class="w-4 h-4"></i>
+                    Importar lista de Dados
+                </button>
+                <button type="submit" class="btn-primary btn-create">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    Criar Inventário
+                </button>
+            </div>
+
+        </form>
+
+    </main>
+
     
-  </form>
 
-  <script>
-    // Mostrar/ocultar campo de fator
-    document.querySelectorAll('input[name="multiplication_type"]').forEach(radio => {
-      radio.addEventListener('change', function() {
-        const factorInput = document.querySelector('input[name="multiplication_value"]');
-        factorInput.classList.toggle('hidden', this.value !== 'factor');
-      });
-    });
-
-    // Submit do formulário
-    document.getElementById('inventory-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = {
-        inventory_name: e.target.inventory_name.value,
-        number_of_counts: document.querySelector('input[name="number_of_counts"]:checked').value,
-        address: {
-          street: e.target.street.value,
-          block: e.target.block.value,
-          level: e.target.level.value
-        },
-        multiplication_type: document.querySelector('input[name="multiplication_type"]:checked').value,
-        multiplication_value: e.target.multiplication_value?.value || ''
-      };
-
-      await apiRequest('/inventories', 'POST', formData);
-      alert('Inventário criado com sucesso!');
-      navigateTo('inventory-list.html');
-    });
-  </script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
