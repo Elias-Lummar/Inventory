@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code - Contagem</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-black text-white p-4 flex items-center">
+    <button id="back-button" class="mr-4">←</button>
+    <h1 class="text-xl font-bold">Inventário - Identificação do Inventário</h1>
+  </header>
+
+  <!-- Conteúdo -->
+  <main class="p-6 flex flex-col items-center justify-center min-h-[80vh]">
+    <div class="text-center mb-6">
+      <h2 class="text-xl font-bold">3ª Contagem - QR Code</h2>
+    </div>
+
+    <!-- QR Code -->
+    <div class="mb-8">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://seusite.com/count-registration.html" 
+           alt="QR Code" class="w-64 h-64">
+    </div>
+
+    <!-- Link Compartilhável -->
+    <div class="w-full max-w-md mb-6">
+      <label class="block mb-2 font-bold">Link para 3ª Contagem</label>
+      <div class="flex">
+        <input type="text" id="share-link" 
+               value="https://seusite.com/count-registration.html?inventory_id=INV-001&count=3" 
+               class="w-full p-3 border rounded-l" readonly>
+        <button onclick="copyToClipboard()" 
+                class="bg-gray-200 px-4 border rounded-r">
+          📋
+        </button>
+      </div>
+    </div>
+
+    <!-- Botão de Ação -->
+    <button onclick="navigateTo('count-registration.html?inventory_id=INV-001&count=3')" 
+            class="w-full bg-yellow-400 text-black py-3 rounded-lg font-bold">
+      Ir para 3ª Contagem
+    </button>
+  </main>
+
+ 
+  <script>
+    // Copiar link para clipboard
+    function copyToClipboard() {
+      const linkInput = document.getElementById('share-link');
+      linkInput.select();
+      document.execCommand('copy');
+      alert('Link copiado para a área de transferência!');
+    }
+
+    // Gerar QR code dinâmico (exemplo com parâmetros)
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const inventoryId = urlParams.get('id') || 'INV-001';
+      const countNumber = urlParams.get('count') || '3';
+      
+      const shareLink = `https://seusite.com/count-inventory.html?inventory_id=${inventoryId}&count=${countNumber}`;
+      document.getElementById('share-link').value = shareLink;
+      
+      // Atualizar QR code com o link
+      const qrImg = document.querySelector('img');
+      qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(shareLink)}`;
+    });
+  </script>
+</body>
+</html>
